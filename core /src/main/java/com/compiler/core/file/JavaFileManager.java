@@ -1,9 +1,7 @@
 package com.compiler.core.file;
 
-
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import sun.misc.Unsafe;
 
 import javax.tools.*;
@@ -15,8 +13,11 @@ import java.lang.reflect.Method;
 import java.net.URI;
 import java.util.*;
 
-
-public class JavaFileManager implements JavaFileManager {
+/**
+ * Java file manager class
+ */
+@Component
+public class JavaFileManager {
 
     private final static Unsafe unsafe;
     private static final long OVERRIDE_OFFSET;
@@ -33,14 +34,18 @@ public class JavaFileManager implements JavaFileManager {
         }
     }
 
+
     private final StandardJavaFileManager fileManager;
+
+
+    public JavaFileManager(StandardJavaFileManager fileManager) {
+        this.fileManager = fileManager;
+    }
 
     // synchronizing due to ConcurrentModificationException
     private final Map<String, ByteArrayOutputStream> buffers = Collections.synchronizedMap(new LinkedHashMap<>());
 
-    MyJavaFileManager(StandardJavaFileManager fileManager) {
-        this.fileManager = fileManager;
-    }
+
 
     public Iterable<Set<javax.tools.JavaFileManager.Location>> listLocationsForModules(final javax.tools.JavaFileManager.Location location) {
         return invokeNamedMethodIfAvailable(location, "listLocationsForModules");
@@ -74,11 +79,13 @@ public class JavaFileManager implements JavaFileManager {
         return fileManager.hasLocation(location);
     }
 
+    // get java file for input
     public JavaFileObject getJavaFileForInput(javax.tools.JavaFileManager.Location location, String className, JavaFileObject.Kind kind) throws IOException {
 
         if (location == StandardLocation.CLASS_OUTPUT) {
             boolean success = false;
             final byte[] bytes;
+            // Thread safe function
             synchronized (buffers) {
                 success = buffers.containsKey(className) && kind == JavaFileObject.Kind.CLASS;
                 bytes = buffers.get(className).toByteArray();
@@ -86,7 +93,7 @@ public class JavaFileManager implements JavaFileManager {
             if (success) {
 
                 return new SimpleJavaFileObject(URI.create(className), kind) {
-                    @NotNull
+
                     public InputStream openInputStream() {
                         return new ByteArrayInputStream(bytes);
                     }
@@ -96,10 +103,9 @@ public class JavaFileManager implements JavaFileManager {
         return fileManager.getJavaFileForInput(location, className, kind);
     }
 
-    @NotNull
+    // Get Java file for out put
     public JavaFileObject getJavaFileForOutput(javax.tools.JavaFileManager.Location location, final String className, JavaFileObject.Kind kind, FileObject sibling) {
         return new SimpleJavaFileObject(URI.create(className), kind) {
-            @NotNull
             public OutputStream openOutputStream() {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 buffers.put(className, baos);
@@ -112,6 +118,7 @@ public class JavaFileManager implements JavaFileManager {
         return fileManager.getFileForInput(location, packageName, relativeName);
     }
 
+    // Get file for output
     public FileObject getFileForOutput(javax.tools.JavaFileManager.Location location, String packageName, String relativeName, FileObject sibling) throws IOException {
         return fileManager.getFileForOutput(location, packageName, relativeName, sibling);
     }
@@ -120,6 +127,7 @@ public class JavaFileManager implements JavaFileManager {
         // Do nothing
     }
 
+    // Close file manager connectin
     public void close() throws IOException {
         fileManager.close();
     }
@@ -128,10 +136,12 @@ public class JavaFileManager implements JavaFileManager {
         return fileManager.isSupportedOption(option);
     }
 
+    // Clear buffer
     public void clearBuffers() {
         buffers.clear();
     }
 
+    // Get all buffers
     public Map<String, byte[]> getAllBuffers() {
         synchronized (buffers) {
             Map<String, byte[]> ret = new LinkedHashMap<>(buffers.size() * 2);
@@ -142,7 +152,7 @@ public class JavaFileManager implements JavaFileManager {
         }
     }
 
-    @SuppressWarnings("unchecked")
+    // TODO
     private <T> T invokeNamedMethodIfAvailable(final javax.tools.JavaFileManager.Location location, final String name) {
         final Method[] methods = fileManager.getClass().getDeclaredMethods();
         for (Method method : methods) {

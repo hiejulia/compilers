@@ -17,7 +17,7 @@ public class StringToJavaSource extends SimpleJavaFileObject {
      * @param name the name of the compilation unit represented by this file object
      * @param code the source code for the compilation unit represented by this file object
      */
-    StringToJavaSource(String name, String code) {
+    public StringToJavaSource(String name, String code) {
         super(URI.create("string:///" + name.replace('.', '/') + JavaFileObject.Kind.SOURCE.extension),
                 JavaFileObject.Kind.SOURCE);
         this.code = code;
@@ -29,6 +29,3 @@ public class StringToJavaSource extends SimpleJavaFileObject {
     }
 
 }
-
-
-

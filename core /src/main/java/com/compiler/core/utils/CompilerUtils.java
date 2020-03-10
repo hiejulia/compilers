@@ -21,7 +21,7 @@ import java.util.Arrays;
  * This class support loading and debugging Java Classes dynamically.
  */
 public enum CompilerUtils {
-    ;
+    
     public static final boolean DEBUGGING = isDebug();
     public static final Compiler CACHED_COMPILER = new Compiler(null, null);
 
@@ -29,7 +29,8 @@ public enum CompilerUtils {
     private static final Method DEFINE_CLASS_METHOD;
     private static final Charset UTF_8 = Charset.forName("UTF-8");
     private static final String JAVA_CLASS_PATH = "java.class.path";
-    static JavaCompiler s_compiler;
+    // s_compiler
+    public static JavaCompiler s_compiler;
     static StandardJavaFileManager s_standardJavaFileManager;
 
     static {
@@ -99,7 +100,7 @@ public enum CompilerUtils {
      * @param dir to add.
      * @return whether the directory was found, if not it is not added either.
      */
-    public static boolean addClassPath(@NotNull String dir) {
+    public static boolean addClassPath(String dir) {
         File file = new File(dir);
         if (file.exists()) {
             String path;
@@ -171,7 +172,7 @@ public enum CompilerUtils {
         }
     }
 
-
+    // read byte
     private static byte[] readBytes(File file) {
         if (!file.exists()) return null;
         long len = file.length();
@@ -213,6 +214,7 @@ public enum CompilerUtils {
         }
     }
 
+    // Write byte
     public static boolean writeBytes(File file, byte[] bytes) {
         File parentDir = file.getParentFile();
         if (!parentDir.isDirectory() && !parentDir.mkdirs())
@@ -242,9 +244,11 @@ public enum CompilerUtils {
         return true;
     }
 
+    // Get input stream
     private static InputStream getInputStream(String filename) throws FileNotFoundException {
         if (filename.isEmpty()) throw new IllegalArgumentException("The file name cannot be empty.");
         if (filename.charAt(0) == '=') return new ByteArrayInputStream(encodeUTF8(filename.substring(1)));
+        // Classloader
         ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
         InputStream is = contextClassLoader.getResourceAsStream(filename);
         if (is != null) return is;
