@@ -21,7 +21,7 @@ import java.util.Arrays;
  * This class support loading and debugging Java Classes dynamically.
  */
 public enum CompilerUtils {
-    
+
     public static final boolean DEBUGGING = isDebug();
     public static final Compiler CACHED_COMPILER = new Compiler(null, null);
 
