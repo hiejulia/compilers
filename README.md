@@ -55,3 +55,36 @@
 + Book 
     + Compiling with C# and Java, Pat Terry, 2005, ISBN 032126360X624
     + Compiler Construction, Niklaus Wirth, 1996, ISBN 0-201-40353-6
+    + Fischer, C. N. and LeBlanc, R. Jr. "Crafting a Compiler", Benjamin/Cummings, Inc., 1989.
+
+
++ Course: 
+    
+The Java Virtual Machine Specification
+Especially: Compiling for the Java Virtual Machine
+Jasmin home page
+Especially: Jasmin instruction list
+LLVM home page
+Interactive Illustrations For Inside the Java 2 Virtual Machine
+Byte Code Engineering Library
+Virtual machine literature
+Chapter 15.1 Virtual Machines. In Michael Scott : Programming Language Pragmatics (3rd Ed.). Morgan Kaufmann, USA, 2009.
+Chapter 10 Intermediate Representations & Chapter 11 Code Generation for a Virtual Machine. In Fischer C.N., Cytron R.K. & LeBlanc R.J.Jr. Crafting A Compiler. Addison-Wesley, 2010.
+Iain Craig, Virtual machines. London, Springer-Verlag, 2006.
+Bill Blunden, Virtual machine design and implementation in C/C++. Plano, Texas, Wordware Publishing, 2002.
+Joshua Engel, Programming for the JAVA virtual machine. Reading (Massachusetts), Addison-Wesley, 1999.
+Tim Lindholm, Frank Yellin, The Java virtual machine specification. Reading (MA) : Addison-Wesley, 1999.
+Bill Venners, Inside the Java virtual machine. New York (NY), McGraw-Hill, 1998.
+Jon Meyer and Troy Downing, Java virtual machine. O’Reilly, 1997
+Gamma et al.: Design Patterns: Elements of Reusable Object-Oriented Software.  Addison-Wesley, Reading, 1995.
+
++ Resource :
+    + http://www.cse.chalmers.se/edu/year/2018/course/TDA283_Compiler_Construction/project/
+    + chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/http://www.cse.chalmers.se/edu/year/2016/course/TDA283_Compiler_Construction/proj.pdf
+
+
+
+
++ Progress: 
+    + https://www.cs.rochester.edu/~cding/Teaching/compilerProjects.html
+        + done : scanner 
