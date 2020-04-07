@@ -3,7 +3,30 @@
 + Crypto compiler 
 + Android compiler
 
+## Principles of compiler design 
+<a href="https://imgur.com/XOY6tgi"><img src="https://i.imgur.com/XOY6tgi.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/tosIdXB"><img src="https://i.imgur.com/tosIdXB.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/aDjfjYu"><img src="https://i.imgur.com/aDjfjYu.png" title="source: imgur.com" /></a>
+- lexical anaylysis 
+<a href="https://imgur.com/7JokU0j"><img src="https://i.imgur.com/7JokU0j.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/1nJeQrf"><img src="https://i.imgur.com/1nJeQrf.png" title="source: imgur.com" /></a>
+- syntax analysis 
+- semantic analysis 
+- Intermediate code generation
+- Code optimization 
+- Code generation phase 
+- Symbol table management
+- Error handling
+- Data-flow analysis 
+- Compiler-construction toolkits
+
+
 ### Java compiler 
+
+### Crypto compiler 
+
+
+
 
 ### JVM 
 + Container aware Java 
