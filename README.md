@@ -10,6 +10,9 @@
 - lexical anaylysis 
 <a href="https://imgur.com/7JokU0j"><img src="https://i.imgur.com/7JokU0j.png" title="source: imgur.com" /></a>
 <a href="https://imgur.com/1nJeQrf"><img src="https://i.imgur.com/1nJeQrf.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/wosu8XG"><img src="https://i.imgur.com/wosu8XG.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/OXpIAB7"><img src="https://i.imgur.com/OXpIAB7.png" title="source: imgur.com" /></a>
+
 - syntax analysis 
 - semantic analysis 
 - Intermediate code generation
@@ -19,6 +22,14 @@
 - Error handling
 - Data-flow analysis 
 - Compiler-construction toolkits
+- Parsing 
+    <a href="https://imgur.com/YhOhF9q"><img src="https://i.imgur.com/YhOhF9q.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/kwW9N08"><img src="https://i.imgur.com/kwW9N08.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Tgo2tFC"><img src="https://i.imgur.com/Tgo2tFC.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/Qyh0TJb"><img src="https://i.imgur.com/Qyh0TJb.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/YhOhF9q"><img src="https://i.imgur.com/YhOhF9q.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/j6UDrhS"><img src="https://i.imgur.com/j6UDrhS.png" title="source: imgur.com" /></a>
+
 
 
 ### Java compiler 
