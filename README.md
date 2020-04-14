@@ -32,12 +32,41 @@
 <a href="https://imgur.com/j6UDrhS"><img src="https://i.imgur.com/j6UDrhS.png" title="source: imgur.com" /></a>
 
 
+### MiniC compiler 
+- Simplified C 
+    - higher order calculator 
+- x86 instrusion set 
+- AT&T syntax for x86 Assembly lang
+
+- Symbol table in miniC 
+    - hoc6 
+    - singly LinkedList 
+    - BST - form Symbol table & Hash Table C 
+    - optimization analysis func 
+    - ADT - AVL or Red black tree 
+
+
+- Target code generation 
+    - assembly lang x86 
+
+
+- gdb for debug FPU code 
+
+###### Architecture of MiniC compiler 
+- grammar specification file - yacc
+- generate RPN IR, 4 tuple list IR and non optimized assembly code 
+- Init Symbol table by insert pre defined constants, keywords, built in functions 
+- Symbol table 
+- generate non optimized assembly lang for each parsed source lang construct 
+- display Symbol table 
+- parser : yacc
+
+
+##### Algorithms 
+- Parser algorithm 
+
 
 ### Java compiler 
-
-### Crypto compiler 
-
-
 
 
 ### JVM 
@@ -77,6 +106,11 @@
 + Program optimization 
 + Code generation 
 + Runtime system 
+
+
+### Crypto compiler 
+
+
 
 #### Other examples of Java compiler written in Java (standard java compiler is written in C/C ++)
 
@@ -127,3 +161,10 @@ Gamma et al.: Design Patterns: Elements of Reusable Object-Oriented Software.  A
 + Progress: 
     + https://www.cs.rochester.edu/~cding/Teaching/compilerProjects.html
         + done : scanner 
+
+
+
+
+
+### Resource 
+- http://ftp.math.utah.edu/pub/hoc/
