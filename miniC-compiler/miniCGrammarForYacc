@@ -1,0 +1,125 @@
+%union {
+Symbol *sym; /* symbol table pointer */
+Symbol *inst; /* machine instruction */
+int narg; /* number of arguments */
+}
+%token <sym>NUMBER STRING PRINT BLTIN UNDEF WHILE FOR IF ELSE
+%token <sym>FUNCTION PROCEDURE RETURN FUNC PROC READ INT VAR IVAR SVAR END
+%token <narg>ARG
+%type  <sym>  expr
+%type <inst> stmt asgn prlist stmtlist
+%type <inst>cond while for if begin end
+%type <sym>procname
+%type <narg>arglist
+%type  <sym>  dtype
+%type  <sym>  dlist
+%right ‘=’ ADDEQ SUBEQ MULEQ DIVEQ MODEQ
+%left OR
+%left AND
+%left GT GE LT LE EQ NE
+%left ‘+’ ‘–’
+%left ‘*’ ‘/’ ‘%’
+%left UNARYMINUS NOT INC DEC
+%right ‘^’
+%%
+list:  stmtlist END
+       | stmtlist error END
+;
+asgn:  VAR ‘=’ expr
+       | IVAR ‘=’ expr
+| IVAR ADDEQ expr
+| IVAR SUBEQ expr
+| IVAR MULEQ expr
+| IVAR DIVEQ expr
+| IVAR MODEQ expr
+| ARG ‘=’ expr { }
+| ARG ADDEQ expr { }
+| ARG SUBEQ expr { }
+| ARG MULEQ expr { }
+| ARG DIVEQ expr { }
+| ARG MODEQ expr { }
+;
+stmt:  decl
+       | defn
+       | expr
+| RETURN
+| RETURN expr
+| PRINT prlist
+| while’(’ cond ‘)’ stmt end
+| for’(’ cond ‘;’ cond ‘;’ cond ‘)’ stmt end
+| if’(’ cond ‘)’ stmt end
+| if’(’ cond ‘)’ stmt end ELSE stmt end
+| ‘{’ stmtlist ‘}’
+;
+cond:  expr
+;
+while: WHILE
+;
+for:  FOR
+;
+if:  IF
+;
+begin:  /* nothing */
+;
+end:  /* nothing */
+;
+stmtlist: /* nothing */ }
+| stmtlist ‘\n’
+| stmtlist stmt
+;
+expr:  INT
+       | NUMBER
+| VAR
+| IVAR
+| ARG
+| asgn
+| FUNCTION begin ‘(’ arglist ‘)’
+| READ ‘(’ VAR ‘)’
+| BLTIN ‘(’ expr ‘)’
+| ‘(’ expr ‘)’
+| expr ‘+’ expr
+| expr ‘–’ expr
+| expr ‘*’ expr
+| expr ‘/’ expr
+| expr ‘%’ expr
+| expr ‘^’ expr
+| ‘–’ expr %prec UNARYMINUS
+| expr GT expr
+| expr GE expr
+| expr LT expr
+| expr LE expr
+| expr EQ expr
+| expr NE expr
+| expr AND expr
+| expr OR expr
+| NOT expr
+| INC VAR
+| DEC VAR
+| VAR INC
+| VAR DEC
+;
+prlist:  expr
+| STRING
+| prlist ‘,’ expr
+| prlist ‘,’ STRING
+;
+defn:  FUNC procname ‘(’ ‘)’ stmt
+;
+procname: VAR
+| FUNCTION
+;
+arglist:  /* nothing */
+| expr
+| arglist ‘,’ expr
+;
+decl:    dtype ‘:’ dlist
+       ;
+dtype:   IVAR
+       | VAR
+       | SVAR
+       ;
+dlist:   VAR
+       | dlist ‘,’ VAR
+       ;
+%%
+/*  end of grammar */

@@ -1,5 +1,6 @@
 # Compiler architecture/ algorithms
 + Java compiler
+- C lang compiler to x86 assembly lang 
 + Crypto compiler 
 + Android compiler
 + GNU Compiler Collection(gcc)
@@ -53,6 +54,8 @@
 - gdb for debug FPU code 
 
 ###### Architecture of MiniC compiler 
+<a href="https://imgur.com/3arpPhK"><img src="https://i.imgur.com/3arpPhK.png" title="source: imgur.com" /></a>
+
 - grammar specification file - yacc
 - generate RPN IR, 4 tuple list IR and non optimized assembly code 
 - Init Symbol table by insert pre defined constants, keywords, built in functions 
