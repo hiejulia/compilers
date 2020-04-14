@@ -79,7 +79,7 @@
     - basic grammar
     - aggregatign constructs 
     - control structs 
-    
+
 
 
 - semantic analysis 
@@ -89,6 +89,8 @@
     - RPN (AST) & 4 tuple 
 - type checking & optimization 
 
+#### Compiler development tool 
+- yacc 
 
 ### Java compiler 
 
@@ -196,3 +198,4 @@ Gamma et al.: Design Patterns: Elements of Reusable Object-Oriented Software.  A
 http://dinosaur.compilertools.net/yacc/
 - https://www.cs.purdue.edu/homes/xyzhang/spring09/notes/intro.pdf
 
+- chrome-extension://oemmndcbldboiebfnladdacbdfmadadm/http://web.cs.ucla.edu/~palsberg/course/purdue/cs352/F00/lec4.pdf

@@ -23,12 +23,15 @@ typedef struct node_struct{
 struct node_struct *link[2]; // left = 0, right = 1
 util u,v,w,x,y,z;
 }Node;
+
+
 typedef Node Symbol;
 
 
 
 
 Symbol *symtab; /* symbol table */
+
 Symbol* lookup(char* s){        /* find s in symbol table */
         Symbol *sp;
         sp = malloc(sizeof(Symbol));
@@ -48,15 +51,15 @@ Symbol* install(char* s, int t, double d){/* install s in symbol table */
         insert_node(&symtab, sp);
         return sp;
 }
+
 int comp(Node *i, Node *j){
   return strcmp(i–>w.S, j–>w.S);
 }
+
 void display_value(Node *n){
   if(n == NULL) printf(″No value available\n″);
   else printf(″[%s](%d){%x}\n″, n–>w.S,n–>v.I,n–>u.P);
 }
-
-
 
 
 void insert_node(Node **r, Node *n){
